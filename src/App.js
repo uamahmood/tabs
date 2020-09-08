@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const Tab = props => {
+
+    const [currentTab, setCurrentTab] = useState(0);
+
+    const content = [
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit.", 
+        "Obcaecati corporis praesentium hic?",
+        "Tab 3 isn't going to use lorem ipsum!",
+    ];
+
+    return (
+        <div class="container mt-5">
+            <h1>Tabs</h1>
+            <ul className="nav nav-tabs my-4">
+                <li className="nav-item">
+                    <a className={currentTab === 0 ? "nav-link active": "nav-link"} href="/#" onClick={e => setCurrentTab(0)}>Tab 1</a>
+                </li>
+                <li className="nav-item">
+                    <a className={currentTab === 1 ? "nav-link active": "nav-link"} href="/#" onClick={e => setCurrentTab(1)}>Tab 2</a>
+                </li>
+                <li className="nav-item">
+                    <a className={currentTab === 2 ? "nav-link active": "nav-link"} href="/#" onClick={e => setCurrentTab(2)}>Tab 3</a>
+                </li>
+            </ul>
+            <div className="alert alert-success">{content[currentTab]}</div>
+        </div>
+    );
 }
 
-export default App;
+export default Tab;
